@@ -1,0 +1,96 @@
+PROCEDURE dot_product(v1,v2)
+VAR
+    v1, v2: ARRAY_OF FLOAT [50];
+    ps: FLOAT;
+    i: INTEGER;
+BEGIN
+
+    ps := 0;
+    FOR i FROM 0 TO length(v1) STEP 1  DO
+        ps := ps + v1[i] * v2[i];
+    END_FOR
+    Write( ps);
+END
+
+
+
+FUNCTION dot_product(v1,v2) : FLOAT
+VAR
+    v1, v2: ARRAY_OF FLOAT [50];
+    ps: FLOAT;
+    i: INTEGER;
+BEGIN
+  REPEAT
+    Write('Please enter two equal-length vectors');
+    Read(v1,v2);
+  UNTIL (length(v1)=length(v2))
+  ps := 0;    
+  FOR i FROM 0 TO length(v1) STEP 1  DO
+    ps := ps + v1[i] * v2[i];
+  END_FOR
+    RETURN ps ;
+END
+
+
+
+
+
+// Solution using the function 
+ALGORITHM dot_scalar
+
+
+VAR
+    v1, v2 : ARRAY_OF FLOAT [50];
+    i, n: INTEGER;
+    produit: FLOAT;
+
+BEGIN
+    Read(n);
+ 
+    FOR i FROM 1 TO n STEP 1  DO
+       REPEAT
+    Write('Please enter two equal-length vectors');
+    Read(v1,v2);
+       UNTIL (length(v1)=length(v2))
+        dot_product(v1,v2);
+        IF (dot_product(v1,v2) =0) THEN
+            Write('v1 and v2 are orthogonal');
+            ELSE
+            Write('v1 and v2 are not orthogonal');
+            
+        END_IF
+    END_FOR
+    
+
+END
+
+
+// Solution using the function 
+
+ALGORITHM dot_scalar
+
+
+VAR
+    v1, v2 : ARRAY_OF FLOAT [50];
+    i, n: INTEGER;
+    produit: FLOAT;
+
+BEGIN
+    Read(n);
+ 
+    FOR i FROM 1 TO n STEP 1  DO
+       REPEAT
+    Write('Please enter two equal-length vectors');
+    Read(v1,v2);
+       UNTIL (length(v1)=length(v2))
+        produit := dot_product(v1,v2);
+        IF (produit =0) THEN
+            Write('v1 and v2 are orthogonal');
+            ELSE
+            Write('v1 and v2 are not orthogonal');
+            
+        END_IF
+    END_FOR
+    
+
+END
